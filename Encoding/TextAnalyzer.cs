@@ -1,10 +1,10 @@
-﻿using TextBuster.Encoding.Graph;
+﻿using TextBuster.Encoding.Tree;
 
 namespace TextBuster.Encoding;
 
 public class TextAnalyzer
 {
-    private string _content;
+    private readonly string _content;
     private HashSet<char> _chars;
     
     public TextAnalyzer(string textToAnalyze)
@@ -30,6 +30,8 @@ public class TextAnalyzer
         {
             graphCollection.Add(new Graph(character,this._chars.Count(c => c==character)));
         }
-        return graphCollection.Sort((a, b) => b.NbAppearances.CompareTo(a.NbAppearances));
+
+        graphCollection.Sort((a, b) => b.NbAppearances.CompareTo(a.NbAppearances));
+        return graphCollection;
     }
 }

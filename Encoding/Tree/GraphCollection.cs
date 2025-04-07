@@ -1,4 +1,4 @@
-﻿namespace TextBuster.Encoding.Graph;
+﻿namespace TextBuster.Encoding.Tree;
 
 public class GraphCollection:List<Graph>
 {
