@@ -18,12 +18,9 @@ namespace TextBuster
             //     "For any code that is biunique, meaning that the code is uniquely decodeable, the sum of the probability budgets across all symbols is always less than or equal to one. In this example, the sum is strictly equal to one; as a result, the code is termed a complete code. If this is not the case, one can always derive an equivalent code by adding extra symbols (with associated null probabilities), to make the code complete while keeping it biunique";
 
 
-            string content = "aaaaabbbcccddddeef";
-            
-            TextAnalyzer textAnalyzer = new TextAnalyzer(content);
-            GraphCollection graphCollection = textAnalyzer.CreateGraphCollection();
-            Dictionary<string,string> dico=graphCollection.CreateDictionary();
-            
+            FileEnconder fileEnconder = new FileEnconder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\test_buster.txt");
+            fileEnconder.Encode("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\test_buster_compressed.bin");
+            fileEnconder.GiveKey("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\test_buster_keys.json");
             Console.WriteLine("VITA");
             
             // ApplicationConfiguration.Initialize();
