@@ -16,7 +16,6 @@ public class TextAnalyzer
     private void SetAllPossibleCharacters()
     {
         _chars = new HashSet<char>();
-
         foreach (char character in _content)
         {
             _chars.Add(character);
@@ -28,10 +27,9 @@ public class TextAnalyzer
         GraphCollection graphCollection = new GraphCollection();
         foreach (char character in this._chars)
         {
-            graphCollection.Add(new Graph(character,this._chars.Count(c => c==character)));
+            graphCollection.Add(new Graph(character.ToString(),this._content.Count(c => c==character)));
         }
-
-        graphCollection.Sort((a, b) => b.NbAppearances.CompareTo(a.NbAppearances));
+        graphCollection.Characters=this._chars;
         return graphCollection;
     }
 }
