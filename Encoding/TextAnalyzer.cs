@@ -29,6 +29,7 @@ public class TextAnalyzer
         {
             graphCollection.Add(new Graph(character.ToString(),this._content.Count(c => c==character)));
         }
+        graphCollection.Characters=this._chars;
         return graphCollection;
     }
 }

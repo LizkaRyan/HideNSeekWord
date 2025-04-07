@@ -3,6 +3,10 @@
 public class GraphCollection:List<Graph>
 {
 
+    private HashSet<char> _characters = new HashSet<char>();
+    
+    public HashSet<char> Characters { get => _characters; set => _characters = value; }
+    
     private void AssembleSmallestGraphFrequence()
     {
         if (this.Count == 1)
@@ -16,12 +20,23 @@ public class GraphCollection:List<Graph>
         this.Add(graph);
     }
     
-    public void CreateTree()
+    private void CreateTree()
     {
         while (this.Count > 1)
         {
             Sort((a, b) => a.NbAppearances.CompareTo(b.NbAppearances));
             AssembleSmallestGraphFrequence();
         }
+    }
+
+    public Dictionary<string, string> CreateDictionary()
+    {
+        this.CreateTree();
+        Dictionary<string, string> dictionary = new Dictionary<string, string>();
+        foreach (char character in _characters)
+        {
+            dictionary.Add(character.ToString(), this[0].GetGraphByCharacter(character.ToString()));
+        }
+        return dictionary;
     }
 }
