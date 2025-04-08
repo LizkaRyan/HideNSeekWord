@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace TextBuster.Encoding;
+namespace TextBuster.Coding;
 
 public class ByteCollection:List<Byte>
 {

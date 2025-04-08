@@ -1,6 +1,6 @@
-using TextBuster.Encoding;
-using TextBuster.Encoding.FileBuster;
-using TextBuster.Encoding.Tree;
+using TextBuster.Coding;
+using TextBuster.Coding.FileBuster;
+using TextBuster.Coding.Tree;
 
 namespace TextBuster
 {

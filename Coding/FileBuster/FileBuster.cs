@@ -1,4 +1,4 @@
-﻿namespace TextBuster.Encoding.FileBuster;
+﻿namespace TextBuster.Coding.FileBuster;
 
 public class FileBuster(string filePath)
 {

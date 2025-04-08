@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
-using TextBuster.Encoding.Tree;
+using TextBuster.Coding.Tree;
 
-namespace TextBuster.Encoding.FileBuster;
+namespace TextBuster.Coding.FileBuster;
 
 public class FileEncoder:FileBuster
 {

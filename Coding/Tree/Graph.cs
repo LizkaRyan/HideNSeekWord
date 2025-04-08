@@ -1,4 +1,4 @@
-﻿namespace TextBuster.Encoding.Tree;
+﻿namespace TextBuster.Coding.Tree;
 
 public class Graph
 {

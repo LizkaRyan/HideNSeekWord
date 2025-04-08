@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace TextBuster.Encoding;
+namespace TextBuster.Coding;
 
 public class KeyDecoder:Dictionary<string,string>
 {

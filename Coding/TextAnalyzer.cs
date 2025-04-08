@@ -1,6 +1,6 @@
-﻿using TextBuster.Encoding.Tree;
+﻿using TextBuster.Coding.Tree;
 
-namespace TextBuster.Encoding;
+namespace TextBuster.Coding;
 
 public class TextAnalyzer
 {

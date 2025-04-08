@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace TextBuster.Encoding.FileBuster;
+namespace TextBuster.Coding.FileBuster;
 
 public class FileDecoder:FileBuster
 {
