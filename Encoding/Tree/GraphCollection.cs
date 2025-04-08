@@ -29,10 +29,10 @@ public class GraphCollection:List<Graph>
         }
     }
 
-    public Dictionary<string, string> CreateDictionary()
+    public KeyDecoder CreateDictionary()
     {
         this.CreateTree();
-        Dictionary<string, string> dictionary = new Dictionary<string, string>();
+        KeyDecoder dictionary = new KeyDecoder();
         foreach (char character in _characters)
         {
             dictionary.Add(character.ToString(), this[0].GetGraphByCharacter(character.ToString()));
