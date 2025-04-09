@@ -7,7 +7,7 @@ namespace TextBuster.Steganography.Image;
 public class ImageEncoder:Encoder
 {
 
-    private BytesRGB _bytesRGB;
+    private byte[] _bytesRGB;
 
     private int _height;
     
@@ -31,9 +31,7 @@ public class ImageEncoder:Encoder
 
         this._width = image.Width;
         this._height = image.Height;
-        byte[] blues = new byte[image.Width * image.Height];
-        byte[] reds = new byte[image.Width * image.Height];
-        byte[] greens = new byte[image.Width * image.Height];
+        this._bytesRGB = new byte[this._width * this._height * 3];
         int index = 0;
 
         for (int y = 0; y < image.Height; y++)
@@ -42,14 +40,11 @@ public class ImageEncoder:Encoder
             {
                 Color pixelColor = image.GetPixel(x, y);
 
-                reds[index] = pixelColor.R;
-                greens[index] = pixelColor.G;
-                blues[index] = pixelColor.B;
-                index++;
+                _bytesRGB[index++] = pixelColor.R;
+                _bytesRGB[index++] = pixelColor.G;
+                _bytesRGB[index++] = pixelColor.B;
             }
         }
-        
-        this._bytesRGB = new BytesRGB(reds, greens, blues);
     }
 
     protected override void Encode()
@@ -57,13 +52,12 @@ public class ImageEncoder:Encoder
         string contentEncoded = BinarizeContent();
 
         int index = 0;
-        for (int i = 0; i < contentEncoded.Length; i+=3)
+
+        while (index < contentEncoded.Length)
         {
             try
             {
-                this._bytesRGB.ChangeLastByteRedTo(contentEncoded[i], index);
-                this._bytesRGB.ChangeLastByteGreenTo(contentEncoded[i + 1], index);
-                this._bytesRGB.ChangeLastByteBlueTo(contentEncoded[i + 2], index);
+                this.ChangeLastByteTo(contentEncoded[index],index);
             }
             catch (IndexOutOfRangeException)
             {
@@ -71,6 +65,16 @@ public class ImageEncoder:Encoder
             }
             index++;
         }
+    }
+
+    private void ChangeLastByteTo(char value, int index)
+    {
+        if (value == '1')
+        {
+            this._bytesRGB[index] = (byte)(this._bytesRGB[index] & 0b0000_0001);
+            return;
+        }
+        this._bytesRGB[index] = (byte)(this._bytesRGB[index] | 0b1111_1110);
     }
 
     protected override void SaveTo(string outputPath)
@@ -85,11 +89,10 @@ public class ImageEncoder:Encoder
                 for (int x = 0; x < this._width; x++)
                 {
                     // Récupérer les valeurs R, G et B
-                    byte red = this._bytesRGB.Reds[index];
-                    byte green = this._bytesRGB.Greens[index];
-                    byte blue = this._bytesRGB.Blues[index];
+                    byte red = this._bytesRGB[index++];
+                    byte green = this._bytesRGB[index++];
+                    byte blue = this._bytesRGB[index++];
 
-                    index++;
                     // Définir le pixel
                     Color color = Color.FromArgb(red, green, blue);
                     bitmap.SetPixel(x, y, color);

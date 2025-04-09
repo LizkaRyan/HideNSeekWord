@@ -28,9 +28,9 @@ public abstract class Encoder
         return byteString;
     }
 
-    public Encoder(string content)
+    public Encoder(string filePath)
     {
-        _content = content;
+        _content = File.ReadAllText(filePath);
     }
     
     public void GiveKey(string filePath)

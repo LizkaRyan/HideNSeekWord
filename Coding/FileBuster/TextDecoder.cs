@@ -1,23 +1,14 @@
 ﻿using System.Text.Json;
+using TextBuster.Steganography;
 
 namespace TextBuster.Coding.FileBuster;
 
-<<<<<<< Updated upstream:Coding/FileBuster/FileDecoder.cs
-public class FileDecoder:FileBuster
-{
-    public FileDecoder(string filePath,string fileKey) : base(filePath)
-    {
-        string jsonKey=File.ReadAllText(fileKey);
-        this.Key = JsonSerializer.Deserialize<KeyDecoder>(jsonKey);
-    }
-=======
 public class TextDecoder(string _filePath, string fileKey) : Decoder(_filePath, fileKey)
 {
->>>>>>> Stashed changes:Steganography/Text/TextDecoder.cs
 
     protected override void Decode()
     {
-        ByteCollection bytes = new ByteCollection(File.ReadAllBytes(this.filePath));
+        ByteCollection bytes = new ByteCollection(File.ReadAllBytes(this._filePath));
         KeyDecoder keyDecoder = Key.Invert();
         string bytesString = bytes.ToString();
         while (bytesString.Length > 0)
