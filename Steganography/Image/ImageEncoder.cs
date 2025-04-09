@@ -41,9 +41,9 @@ public class ImageEncoder:Encoder
             {
                 Color pixelColor = image.GetPixel(x, y);
 
+                bytes[index++] = pixelColor.B;
                 bytes[index++] = pixelColor.R;
                 bytes[index++] = pixelColor.G;
-                bytes[index++] = pixelColor.B;
             }
         }
         this._bytesRGB = new ByteCollection(bytes);
@@ -73,12 +73,15 @@ public class ImageEncoder:Encoder
     {
         KeyImageDecoder keyImageDecoder = (KeyImageDecoder)this._key!;
         keyImageDecoder.AddRandomPlace(index);
+        string binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
         if (value == '1')
         {
-            this._bytesRGB[index] = (byte)(this._bytesRGB[index] & 0b0000_0001);
+            this._bytesRGB[index] = (byte)(this._bytesRGB[index] | 1);
+            binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
             return;
         }
-        this._bytesRGB[index] = (byte)(this._bytesRGB[index] | 0b1111_1110);
+        this._bytesRGB[index] = (byte)(this._bytesRGB[index] & ~1);
+        binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
     }
 
     protected override void SaveTo(string outputPath)
@@ -94,15 +97,10 @@ public class ImageEncoder:Encoder
                 {
                     try
                     {
-                        // Récupérer les valeurs R, G et B
-                        byte red = this._bytesRGB[index++];
-                        byte green = this._bytesRGB[index++];
-                        byte blue = this._bytesRGB[index++];
-                        
-                        
                         // Définir le pixel
-                        Color color = Color.FromArgb(red, green, blue);
+                        Color color = Color.FromArgb( this._bytesRGB[index],this._bytesRGB[index+1],this._bytesRGB[index+2]);
                         bitmap.SetPixel(x, y, color);
+                        index += 3;
                     }
                     catch (ArgumentOutOfRangeException)
                     {

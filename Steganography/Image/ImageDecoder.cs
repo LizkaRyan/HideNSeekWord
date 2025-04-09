@@ -1,3 +1,4 @@
+using System.Text.Json;
 using TextBuster.Coding;
 using TextBuster.Coding.Tree;
 
@@ -11,9 +12,12 @@ public class ImageDecoder:Decoder
     
     private ByteCollection _bytesRGB;
 
-    public ImageDecoder(string filePath, string fileKey):base(filePath,fileKey)
+    public ImageDecoder(string filePath, string fileKey):base(filePath)
     {
         this.SetRGB();
+        string jsonKey=File.ReadAllText(fileKey);
+        KeyImageDecoder keyImageDecoder = JsonSerializer.Deserialize<KeyImageDecoder>(jsonKey);
+        this._key = keyImageDecoder;
     }
     
     
@@ -42,7 +46,21 @@ public class ImageDecoder:Decoder
     
     protected override void Decode()
     {
-        this._key.Decode(this._bytesRGB);
-        this._content = this._key.Content;
+        KeyDecoder keyDecoder = Key.Invert();
+        string bytesString = GetContentByte();
+        keyDecoder.Decode(bytesString);
+        this._content = keyDecoder.Content;
+    }
+
+    public string GetContentByte()
+    {
+        KeyImageDecoder keyDecoder = (KeyImageDecoder)this._key;
+        string content = "";
+        foreach (int randomPlace in keyDecoder.RandomPlace)
+        {
+            string bytesString = Convert.ToString(this._bytesRGB[randomPlace], 2).PadLeft(8, '0');
+            content += (this._bytesRGB[randomPlace] & 1) == 1 ? "1" : "0";
+        }
+        return content;
     }
 }

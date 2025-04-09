@@ -8,27 +8,18 @@ public class TextDecoder:Decoder
     
     protected ByteCollection _bytes;
 
-    public TextDecoder(string filePath, string fileKey) : base(filePath, fileKey)
+    public TextDecoder(string filePath, string fileKey) : base(filePath)
     {
         _bytes = new ByteCollection(filePath);
+        string jsonKey=File.ReadAllText(fileKey);
+        this._key = JsonSerializer.Deserialize<KeyDecoder>(jsonKey);
     }
     
     protected override void Decode()
     {
         KeyDecoder keyDecoder = Key.Invert();
         string bytesString = _bytes.ToString();
-        while (bytesString.Length > 0)
-        {
-            for (int i = Math.Min(keyDecoder.MaxLengthByte, bytesString.Length); i > 0; i--)
-            {
-                string byteTest = bytesString.Substring(0, i);
-                if (keyDecoder.Dico.ContainsKey(byteTest))
-                {
-                    this._content += keyDecoder.Dico[byteTest];
-                    bytesString = bytesString.Substring(i, bytesString.Length - i);
-                    break;
-                }
-            }
-        }
+        keyDecoder.Decode(bytesString);
+        this._content = keyDecoder.Content;
     }
 }

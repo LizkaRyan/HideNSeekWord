@@ -8,13 +8,13 @@ public class KeyDecoder
     private Dictionary<string, string> _dico = new();
     
     private int _maxLengthByte;
-    
+
     private string _content;
     
-    public Dictionary<string,string> Dico {get => _dico;}
+    public string Content => _content;
     
-    public string Content {get => _content;}
-
+    public Dictionary<string,string> Dico {get => _dico; set => _dico = value; }
+    
     public int MaxLengthByte
     {
         get => _maxLengthByte;
@@ -52,26 +52,21 @@ public class KeyDecoder
     {
         return new KeyDecoder(this._dico.ToDictionary(key => key.Value,key => key.Key)); 
     }
-    
-    public void Decode(ByteCollection bytes)
+
+    public void Decode(string bytesString)
     {
-        KeyDecoder keyDecoder = this.Invert();
-        string bytesString = bytes.ToString();
-        string content = "";
         while (bytesString.Length > 0)
         {
-            for (int i = Math.Min(keyDecoder.MaxLengthByte, bytesString.Length); i > 0; i--)
+            for (int i = Math.Min(this.MaxLengthByte, bytesString.Length); i > 0; i--)
             {
                 string byteTest = bytesString.Substring(0, i);
-                if (keyDecoder._dico.ContainsKey(byteTest))
+                if (this.Dico.ContainsKey(byteTest))
                 {
-                    content += keyDecoder._dico[byteTest];
+                    this._content += this.Dico[byteTest];
                     bytesString = bytesString.Substring(i, bytesString.Length - i);
                     break;
                 }
             }
         }
-
-        this._content = content;
     }
 }

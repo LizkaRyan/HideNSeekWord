@@ -12,13 +12,11 @@ public abstract class Decoder
 
     protected string _filePath;
     
-    public KeyDecoder Key {get => _key ?? throw new InvalidOperationException(); }
+    public KeyDecoder Key {get => _key ?? throw new InvalidOperationException(); set => _key = value; }
 
-    public Decoder(string filePath,string fileKey)
+    public Decoder(string filePath)
     {
         this._filePath = filePath;
-        string jsonKey=File.ReadAllText(fileKey);
-        this._key = JsonSerializer.Deserialize<KeyDecoder>(jsonKey);
         this._content = "";
     }
     

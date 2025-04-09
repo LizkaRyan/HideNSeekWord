@@ -7,7 +7,7 @@ public class KeyImageDecoder:KeyDecoder
 {
     HashSet<int> _randomPlace;
     
-    public HashSet<int> RandomPlace {get => _randomPlace;}
+    public HashSet<int> RandomPlace {get => _randomPlace; set => _randomPlace = value; }
 
     public KeyImageDecoder()
     {
