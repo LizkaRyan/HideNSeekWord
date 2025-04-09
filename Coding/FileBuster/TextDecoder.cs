@@ -22,9 +22,9 @@ public class TextDecoder:Decoder
             for (int i = Math.Min(keyDecoder.MaxLengthByte, bytesString.Length); i > 0; i--)
             {
                 string byteTest = bytesString.Substring(0, i);
-                if (keyDecoder.ContainsKey(byteTest))
+                if (keyDecoder.Dico.ContainsKey(byteTest))
                 {
-                    this._content += keyDecoder[byteTest];
+                    this._content += keyDecoder.Dico[byteTest];
                     bytesString = bytesString.Substring(i, bytesString.Length - i);
                     break;
                 }

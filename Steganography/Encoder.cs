@@ -22,7 +22,7 @@ public abstract class Encoder
         string byteString = "";
         foreach (char charachter in Content)
         {
-            byteString+=this.Key![charachter.ToString()];
+            byteString+=this.Key!.Dico[charachter.ToString()];
         }
 
         return byteString;
@@ -33,7 +33,7 @@ public abstract class Encoder
         _content = content;
     }
     
-    public void GiveKey(string filePath)
+    public virtual void GiveKey(string filePath)
     {
         // Convertir le dictionnaire en JSON
         string json = JsonSerializer.Serialize(this.Key, new JsonSerializerOptions { WriteIndented = true });

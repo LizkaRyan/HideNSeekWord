@@ -1,3 +1,4 @@
+using System.Text.Json;
 using TextBuster.Coding;
 using TextBuster.Coding.Tree;
 
@@ -70,6 +71,8 @@ public class ImageEncoder:Encoder
 
     private void ChangeLastByteTo(char value, int index)
     {
+        KeyImageDecoder keyImageDecoder = (KeyImageDecoder)this._key!;
+        keyImageDecoder.AddRandomPlace(index);
         if (value == '1')
         {
             this._bytesRGB[index] = (byte)(this._bytesRGB[index] & 0b0000_0001);
@@ -111,5 +114,14 @@ public class ImageEncoder:Encoder
             bitmap.Save(outputPath, System.Drawing.Imaging.ImageFormat.Png);
 
         }
+    }
+    
+    public override void GiveKey(string filePath)
+    {
+        // Convertir le dictionnaire en JSON
+        string json = JsonSerializer.Serialize((KeyImageDecoder)this.Key, new JsonSerializerOptions { WriteIndented = true });
+
+        // Écrire le JSON dans un fichier
+        File.WriteAllText(filePath, json);
     }
 }

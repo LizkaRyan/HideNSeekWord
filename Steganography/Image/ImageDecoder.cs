@@ -42,6 +42,7 @@ public class ImageDecoder:Decoder
     
     protected override void Decode()
     {
-        this._content = this._key.Decode(this._bytesRGB);
+        this._key.Decode(this._bytesRGB);
+        this._content = this._key.Content;
     }
 }

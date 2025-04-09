@@ -5,11 +5,18 @@ namespace TextBuster.Steganography.Image;
 
 public class KeyImageDecoder:KeyDecoder
 {
-    private HashSet<int> _randomPlace;
+    HashSet<int> _randomPlace;
+    
+    public HashSet<int> RandomPlace {get => _randomPlace;}
 
     public KeyImageDecoder()
     {
         _randomPlace = new HashSet<int>();
+    }
+
+    internal void AddRandomPlace(int place)
+    {
+        this._randomPlace.Add(place);
     }
     
     public override KeyDecoder CreateKeyDecoder(GraphCollection graphs)
