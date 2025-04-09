@@ -41,9 +41,9 @@ public class ImageEncoder:Encoder
             {
                 Color pixelColor = image.GetPixel(x, y);
 
-                bytes[index++] = pixelColor.B;
                 bytes[index++] = pixelColor.R;
                 bytes[index++] = pixelColor.G;
+                bytes[index++] = pixelColor.B;
             }
         }
         this._bytesRGB = new ByteCollection(bytes);
