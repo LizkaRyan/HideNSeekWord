@@ -1,4 +1,6 @@
-﻿namespace TextBuster.Coding.Tree;
+﻿using TextBuster.Steganography.Image;
+
+namespace TextBuster.Coding.Tree;
 
 public class GraphCollection:List<Graph>
 {
@@ -19,8 +21,8 @@ public class GraphCollection:List<Graph>
         this.RemoveAt(0);
         this.Add(graph);
     }
-    
-    private void CreateTree()
+
+    internal void CreateTree()
     {
         while (this.Count > 1)
         {
@@ -29,14 +31,12 @@ public class GraphCollection:List<Graph>
         }
     }
 
-    public KeyDecoder CreateDictionary()
+    internal KeyDecoder CreateKeyDecoder(KeyDecoder key)
     {
-        this.CreateTree();
-        KeyDecoder dictionary = new KeyDecoder();
         foreach (char character in _characters)
         {
-            dictionary.Add(character.ToString(), this[0].GetGraphByCharacter(character.ToString()));
+            key.Add(character.ToString(), this[0].GetGraphByCharacter(character.ToString()));
         }
-        return dictionary;
+        return key;
     }
 }
