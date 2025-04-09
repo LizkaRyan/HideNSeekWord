@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using TextBuster.Coding.Tree;
 
 namespace TextBuster.Coding;
 
@@ -11,7 +12,7 @@ public class KeyDecoder:Dictionary<string,string>
         get => _maxLengthByte;
     }
 
-    public KeyDecoder():base()
+    public KeyDecoder()
     {
         _maxLengthByte = 0;
     }
@@ -29,6 +30,12 @@ public class KeyDecoder:Dictionary<string,string>
         {
             _maxLengthByte = value.Length;
         }
+    }
+    
+    public virtual KeyDecoder CreateKeyDecoder(GraphCollection graphs)
+    {
+        graphs.CreateTree();
+        return graphs.CreateKeyDecoder(this);
     }
         
     
