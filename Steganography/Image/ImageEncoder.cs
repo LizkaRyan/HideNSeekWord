@@ -1,13 +1,13 @@
+using System.Text.Json;
 using TextBuster.Coding;
 using TextBuster.Coding.Tree;
-using TextBuster.Steganography.Text;
 
 namespace TextBuster.Steganography.Image;
 
 public class ImageEncoder:Encoder
 {
 
-    private byte[] _bytesRGB;
+    private ByteCollection _bytesRGB;
 
     private int _height;
     
@@ -15,8 +15,9 @@ public class ImageEncoder:Encoder
 
     private string _imagePath;
     
-    public ImageEncoder(string imagePath,string content):base(content)
+    public ImageEncoder(string imagePath,string content):base(imagePath)
     {
+        this._content = content;
         this._imagePath = imagePath;
         this.SetRGB();
         
@@ -31,7 +32,7 @@ public class ImageEncoder:Encoder
 
         this._width = image.Width;
         this._height = image.Height;
-        this._bytesRGB = new byte[this._width * this._height * 3];
+        byte[] bytes = new byte[this._width * this._height * 3];
         int index = 0;
 
         for (int y = 0; y < image.Height; y++)
@@ -40,11 +41,12 @@ public class ImageEncoder:Encoder
             {
                 Color pixelColor = image.GetPixel(x, y);
 
-                _bytesRGB[index++] = pixelColor.R;
-                _bytesRGB[index++] = pixelColor.G;
-                _bytesRGB[index++] = pixelColor.B;
+                bytes[index++] = pixelColor.R;
+                bytes[index++] = pixelColor.G;
+                bytes[index++] = pixelColor.B;
             }
         }
+        this._bytesRGB = new ByteCollection(bytes);
     }
 
     protected override void Encode()
@@ -69,12 +71,17 @@ public class ImageEncoder:Encoder
 
     private void ChangeLastByteTo(char value, int index)
     {
+        KeyImageDecoder keyImageDecoder = (KeyImageDecoder)this._key!;
+        keyImageDecoder.AddRandomPlace(index);
+        string binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
         if (value == '1')
         {
-            this._bytesRGB[index] = (byte)(this._bytesRGB[index] & 0b0000_0001);
+            this._bytesRGB[index] = (byte)(this._bytesRGB[index] | 1);
+            binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
             return;
         }
-        this._bytesRGB[index] = (byte)(this._bytesRGB[index] | 0b1111_1110);
+        this._bytesRGB[index] = (byte)(this._bytesRGB[index] & ~1);
+        binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
     }
 
     protected override void SaveTo(string outputPath)
@@ -88,19 +95,31 @@ public class ImageEncoder:Encoder
             {
                 for (int x = 0; x < this._width; x++)
                 {
-                    // Récupérer les valeurs R, G et B
-                    byte red = this._bytesRGB[index++];
-                    byte green = this._bytesRGB[index++];
-                    byte blue = this._bytesRGB[index++];
-
-                    // Définir le pixel
-                    Color color = Color.FromArgb(red, green, blue);
-                    bitmap.SetPixel(x, y, color);
+                    try
+                    {
+                        // Définir le pixel
+                        Color color = Color.FromArgb( this._bytesRGB[index],this._bytesRGB[index+1],this._bytesRGB[index+2]);
+                        bitmap.SetPixel(x, y, color);
+                        index += 3;
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        break;
+                    }
                 }
             }
 
             bitmap.Save(outputPath, System.Drawing.Imaging.ImageFormat.Png);
 
         }
+    }
+    
+    public override void GiveKey(string filePath)
+    {
+        // Convertir le dictionnaire en JSON
+        string json = JsonSerializer.Serialize((KeyImageDecoder)this.Key, new JsonSerializerOptions { WriteIndented = true });
+
+        // Écrire le JSON dans un fichier
+        File.WriteAllText(filePath, json);
     }
 }

@@ -3,26 +3,23 @@ using TextBuster.Steganography;
 
 namespace TextBuster.Coding.FileBuster;
 
-public class TextDecoder(string _filePath, string fileKey) : Decoder(_filePath, fileKey)
+public class TextDecoder:Decoder
 {
+    
+    protected ByteCollection _bytes;
 
+    public TextDecoder(string filePath, string fileKey) : base(filePath)
+    {
+        _bytes = new ByteCollection(filePath);
+        string jsonKey=File.ReadAllText(fileKey);
+        this._key = JsonSerializer.Deserialize<KeyDecoder>(jsonKey);
+    }
+    
     protected override void Decode()
     {
-        ByteCollection bytes = new ByteCollection(File.ReadAllBytes(this._filePath));
         KeyDecoder keyDecoder = Key.Invert();
-        string bytesString = bytes.ToString();
-        while (bytesString.Length > 0)
-        {
-            for (int i = Math.Min(keyDecoder.MaxLengthByte, bytesString.Length); i > 0; i--)
-            {
-                string byteTest = bytesString.Substring(0, i);
-                if (keyDecoder.ContainsKey(byteTest))
-                {
-                    this._content += keyDecoder[byteTest];
-                    bytesString = bytesString.Substring(i, bytesString.Length - i);
-                    break;
-                }
-            }
-        }
+        string bytesString = _bytes.ToString();
+        keyDecoder.Decode(bytesString);
+        this._content = keyDecoder.Content;
     }
 }

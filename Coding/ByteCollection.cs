@@ -12,10 +12,14 @@ public class ByteCollection:List<Byte>
         get { return _unusedBytes; }
     }
 
+    public ByteCollection()
+    {
+        
+    }
+
     public ByteCollection(byte[] bytes)
     {
-        this._unusedBytes = bytes[0];
-        this.AddRange(bytes.Skip(1));
+        this.AddRange(bytes);
     }
     
     public ByteCollection(string contentEncoded)

@@ -8,6 +8,7 @@ namespace TextBuster.Coding.FileBuster;
 public class TextEncoder:Encoder
 {
     ByteCollection bytes;
+    
     public TextEncoder(string filePath):base(filePath)
     {
         TextAnalyzer analyzer = new TextAnalyzer(this._content);
