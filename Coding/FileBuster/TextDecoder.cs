@@ -3,14 +3,20 @@ using TextBuster.Steganography;
 
 namespace TextBuster.Coding.FileBuster;
 
-public class TextDecoder(string _filePath, string fileKey) : Decoder(_filePath, fileKey)
+public class TextDecoder:Decoder
 {
+    
+    protected ByteCollection _bytes;
 
+    public TextDecoder(string filePath, string fileKey) : base(filePath, fileKey)
+    {
+        _bytes = new ByteCollection(filePath);
+    }
+    
     protected override void Decode()
     {
-        ByteCollection bytes = new ByteCollection(File.ReadAllBytes(this._filePath));
         KeyDecoder keyDecoder = Key.Invert();
-        string bytesString = bytes.ToString();
+        string bytesString = _bytes.ToString();
         while (bytesString.Length > 0)
         {
             for (int i = Math.Min(keyDecoder.MaxLengthByte, bytesString.Length); i > 0; i--)

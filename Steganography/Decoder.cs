@@ -11,7 +11,7 @@ public abstract class Decoder
     protected KeyDecoder? _key;
 
     protected string _filePath;
-
+    
     public KeyDecoder Key {get => _key ?? throw new InvalidOperationException(); }
 
     public Decoder(string filePath,string fileKey)

@@ -43,4 +43,26 @@ public class KeyDecoder:Dictionary<string,string>
     {
         return new KeyDecoder(this.ToDictionary(key => key.Value,key => key.Key)); 
     }
+    
+    public string Decode(ByteCollection bytes)
+    {
+        KeyDecoder keyDecoder = this.Invert();
+        string bytesString = bytes.ToString();
+        string content = "";
+        while (bytesString.Length > 0)
+        {
+            for (int i = Math.Min(keyDecoder.MaxLengthByte, bytesString.Length); i > 0; i--)
+            {
+                string byteTest = bytesString.Substring(0, i);
+                if (keyDecoder.ContainsKey(byteTest))
+                {
+                    content += keyDecoder[byteTest];
+                    bytesString = bytesString.Substring(i, bytesString.Length - i);
+                    break;
+                }
+            }
+        }
+
+        return content;
+    }
 }
