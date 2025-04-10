@@ -10,6 +10,8 @@ public abstract class Encoder
     
     protected KeyDecoder? _key;
 
+    protected TextAnalyzer _analyzer;
+
     public KeyDecoder Key {get => _key ?? throw new InvalidOperationException(); }
     
     public string Content
@@ -26,11 +28,6 @@ public abstract class Encoder
         }
 
         return byteString;
-    }
-
-    public Encoder(string content)
-    {
-        _content = content;
     }
     
     public virtual void GiveKey(string filePath)

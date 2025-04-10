@@ -15,10 +15,10 @@ public class ImageEncoder:Encoder
 
     private string _imagePath;
     
-    public ImageEncoder(string imagePath,string content):base(imagePath)
+    public ImageEncoder(string imagePath,string content)
     {
-        this._content = content;
         this._imagePath = imagePath;
+        this._content = content;
         this.SetRGB();
         
         TextAnalyzer textAnalyzer = new TextAnalyzer(_content);

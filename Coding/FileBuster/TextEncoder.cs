@@ -9,8 +9,9 @@ public class TextEncoder:Encoder
 {
     ByteCollection bytes;
     
-    public TextEncoder(string filePath):base(filePath)
+    public TextEncoder(string filePath)
     {
+        _content = File.ReadAllText(filePath);
         TextAnalyzer analyzer = new TextAnalyzer(this._content);
         GraphCollection graphs = analyzer.CreateGraphCollection();
         this._key = new KeyDecoder().CreateKeyDecoder(graphs);
