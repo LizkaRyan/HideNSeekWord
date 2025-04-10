@@ -14,6 +14,15 @@ public class KeyImageDecoder:KeyDecoder
         _randomPlace = new HashSet<int>();
     }
 
+    public void SetRandomPlace(int maxRandom,int length)
+    {
+        Random random = new Random();
+        while (_randomPlace.Count < length)
+        {
+            _randomPlace.Add(random.NextInt(0,maxRandom));
+        }
+    }
+
     internal void AddRandomPlace(int place)
     {
         this._randomPlace.Add(place);

@@ -10,7 +10,10 @@ public class TextDecoder:Decoder
 
     public TextDecoder(string filePath, string fileKey) : base(filePath)
     {
-        _bytes = new ByteCollection(filePath);
+        byte[] bytes = File.ReadAllBytes(filePath);
+        _bytes = new ByteCollection();
+        _bytes.UnusedBytes = bytes[0];
+        _bytes.AddRange(bytes.Skip(1).ToArray());
         string jsonKey=File.ReadAllText(fileKey);
         this._key = JsonSerializer.Deserialize<KeyDecoder>(jsonKey);
     }

@@ -10,6 +10,7 @@ public class ByteCollection:List<Byte>
     public int UnusedBytes
     {
         get { return _unusedBytes; }
+        set { _unusedBytes = value; }
     }
 
     public ByteCollection()

@@ -15,10 +15,10 @@ public class ImageEncoder:Encoder
 
     private string _imagePath;
     
-    public ImageEncoder(string imagePath,string content):base(imagePath)
+    public ImageEncoder(string imagePath,string content)
     {
-        this._content = content;
         this._imagePath = imagePath;
+        this._content = content;
         this.SetRGB();
         
         TextAnalyzer textAnalyzer = new TextAnalyzer(_content);
@@ -54,12 +54,13 @@ public class ImageEncoder:Encoder
         string contentEncoded = BinarizeContent();
 
         int index = 0;
-
-        while (index < contentEncoded.Length)
+        KeyImageDecoder keyDecoder = (KeyImageDecoder)this._key;
+        keyDecoder.SetRandomPlace(this._bytesRGB.Count,contentEncoded.Length);
+        foreach (int place in keyDecoder.RandomPlace)
         {
             try
             {
-                this.ChangeLastByteTo(contentEncoded[index],index);
+                this.ChangeLastByteTo(contentEncoded[index],place);
             }
             catch (IndexOutOfRangeException)
             {
