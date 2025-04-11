@@ -33,9 +33,12 @@ namespace TextBuster
             // ImageDecoder imageDecoder = new ImageDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.png","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_key.json");
             // imageDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.txt");
 
-            AudioEncoder audioEncoder = new AudioEncoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\PinkPanther30.wav","My one and only love i've been lonely long enough will i find you when the night is over");
-            audioEncoder.EncodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav");
-            audioEncoder.GiveKey("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
+            // AudioEncoder audioEncoder = new AudioEncoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\PinkPanther30.wav","My one and only love i've been lonely long enough will i find you when the night is over");
+            // audioEncoder.EncodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav");
+            // audioEncoder.GiveKey("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
+
+            AudioDecoder audioDecoder = new AudioDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
+            audioDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink.txt");
             
             // ApplicationConfiguration.Initialize();
             // Application.Run(new Form1());
