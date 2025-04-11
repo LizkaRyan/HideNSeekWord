@@ -9,9 +9,7 @@ public abstract class Encoder
     protected string _content;
     
     protected KeyDecoder? _key;
-
-    protected TextAnalyzer _analyzer;
-
+    
     public KeyDecoder Key {get => _key ?? throw new InvalidOperationException(); }
     
     public string Content
