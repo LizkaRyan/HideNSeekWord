@@ -1,4 +1,5 @@
 using TextBuster.Coding.FileBuster;
+using TextBuster.Steganography.Audio;
 using TextBuster.Steganography.Image;
 
 namespace TextBuster
@@ -188,7 +189,59 @@ namespace TextBuster
         {
             Cursor = Cursors.WaitCursor;
             ImageDecoder imageDecoder = new ImageDecoder(pngFileInputDecode.Text, filePngKeyJsonInput.Text);
-            imageDecoder.DecodeAndSaveTo(pngOutputDecodeBrowser.Text+ "\\" + outputPngDecoderFileName.Text +".txt");
+            imageDecoder.DecodeAndSaveTo(pngOutputDecodeBrowser.Text + "\\" + outputPngDecoderFileName.Text + ".txt");
+            Cursor = Cursors.Default;
+        }
+
+        private void btnInputWav_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "C:\\";
+                openFileDialog.Filter = "Tous les fichiers (*.wav)|*.wav";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileInputWav.Text = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void btnOutputBrowser_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowser = new FolderBrowserDialog())
+            {
+                // Optionnel : Définir le dossier racine (par défaut : Bureau)
+                folderBrowser.RootFolder = Environment.SpecialFolder.Desktop;
+
+                // Optionnel : Définir la description
+                folderBrowser.Description = "Veuillez sélectionner un dossier.";
+
+                // Optionnel : Permettre la création de nouveaux dossiers
+                folderBrowser.ShowNewFolderButton = true;
+
+                // Affiche la boîte de dialogue et récupère le résultat
+                DialogResult result = folderBrowser.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
+                {
+                    outputWavBrowser.Text = folderBrowser.SelectedPath;
+                }
+                else
+                {
+                    Console.WriteLine("Aucun dossier sélectionné.");
+                }
+            }
+        }
+
+        private void encodeWavBtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            AudioEncoder audioEncoder = new AudioEncoder(fileInputWav.Text, messageAudio.Text);
+            audioEncoder.EncodeAndSaveTo(outputWavBrowser.Text + "\\" + outputWavName.Text + ".wav");
+            audioEncoder.GiveKey(outputWavBrowser.Text + "\\" + outputWavName.Text + "_key.json");
             Cursor = Cursors.Default;
         }
     }

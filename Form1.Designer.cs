@@ -34,6 +34,32 @@ namespace TextBuster
             imageBtn = new Button();
             audioBtn = new Button();
             mainPanel = new Panel();
+            audioPanel = new Panel();
+            button1 = new Button();
+            textBox1 = new TextBox();
+            label13 = new Label();
+            label14 = new Label();
+            messageAudio = new TextBox();
+            label15 = new Label();
+            textBox3 = new TextBox();
+            label16 = new Label();
+            button2 = new Button();
+            textBox4 = new TextBox();
+            button3 = new Button();
+            button4 = new Button();
+            label17 = new Label();
+            textBox5 = new TextBox();
+            label18 = new Label();
+            label19 = new Label();
+            outputWavName = new TextBox();
+            label20 = new Label();
+            btnOutputBrowser = new Button();
+            outputWavBrowser = new TextBox();
+            btnInputWav = new Button();
+            encodeWavBtn = new Button();
+            label21 = new Label();
+            fileInputWav = new TextBox();
+            label22 = new Label();
             imagePanel = new Panel();
             btnFilePngKey = new Button();
             filePngKeyJsonInput = new TextBox();
@@ -72,6 +98,7 @@ namespace TextBuster
             fileTxtInput = new TextBox();
             labelFileTxt = new Label();
             mainPanel.SuspendLayout();
+            audioPanel.SuspendLayout();
             imagePanel.SuspendLayout();
             panelDictionnary.SuspendLayout();
             SuspendLayout();
@@ -110,11 +137,258 @@ namespace TextBuster
             // 
             // mainPanel
             // 
-            mainPanel.Controls.Add(imagePanel);
+            mainPanel.Controls.Add(audioPanel);
             mainPanel.Location = new Point(0, 63);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(964, 311);
             mainPanel.TabIndex = 3;
+            // 
+            // audioPanel
+            // 
+            audioPanel.Controls.Add(button1);
+            audioPanel.Controls.Add(textBox1);
+            audioPanel.Controls.Add(label13);
+            audioPanel.Controls.Add(label14);
+            audioPanel.Controls.Add(messageAudio);
+            audioPanel.Controls.Add(label15);
+            audioPanel.Controls.Add(textBox3);
+            audioPanel.Controls.Add(label16);
+            audioPanel.Controls.Add(button2);
+            audioPanel.Controls.Add(textBox4);
+            audioPanel.Controls.Add(button3);
+            audioPanel.Controls.Add(button4);
+            audioPanel.Controls.Add(label17);
+            audioPanel.Controls.Add(textBox5);
+            audioPanel.Controls.Add(label18);
+            audioPanel.Controls.Add(label19);
+            audioPanel.Controls.Add(outputWavName);
+            audioPanel.Controls.Add(label20);
+            audioPanel.Controls.Add(btnOutputBrowser);
+            audioPanel.Controls.Add(outputWavBrowser);
+            audioPanel.Controls.Add(btnInputWav);
+            audioPanel.Controls.Add(encodeWavBtn);
+            audioPanel.Controls.Add(label21);
+            audioPanel.Controls.Add(fileInputWav);
+            audioPanel.Controls.Add(label22);
+            audioPanel.Location = new Point(2, 6);
+            audioPanel.Name = "audioPanel";
+            audioPanel.Size = new Size(961, 299);
+            audioPanel.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(893, 106);
+            button1.Name = "button1";
+            button1.Size = new Size(41, 29);
+            button1.TabIndex = 34;
+            button1.Text = "🔗";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(648, 108);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(239, 27);
+            textBox1.TabIndex = 33;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(547, 111);
+            label13.Name = "label13";
+            label13.Size = new Size(95, 20);
+            label13.TabIndex = 32;
+            label13.Text = "File key .json:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(77, 60);
+            label14.Name = "label14";
+            label14.Size = new Size(70, 20);
+            label14.TabIndex = 31;
+            label14.Text = "Message:";
+            // 
+            // messageAudio
+            // 
+            messageAudio.Location = new Point(154, 60);
+            messageAudio.Multiline = true;
+            messageAudio.Name = "messageAudio";
+            messageAudio.Size = new Size(283, 88);
+            messageAudio.TabIndex = 30;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(516, 177);
+            label15.Name = "label15";
+            label15.Size = new Size(126, 20);
+            label15.TabIndex = 29;
+            label15.Text = "Output File name:";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(648, 177);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(239, 27);
+            textBox3.TabIndex = 28;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(527, 144);
+            label16.Name = "label16";
+            label16.Size = new Size(115, 20);
+            label16.TabIndex = 27;
+            label16.Text = "Output browser:";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(893, 141);
+            button2.Name = "button2";
+            button2.Size = new Size(41, 29);
+            button2.TabIndex = 26;
+            button2.Text = "🔗";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(648, 141);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(239, 27);
+            textBox4.TabIndex = 25;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(893, 74);
+            button3.Name = "button3";
+            button3.Size = new Size(41, 29);
+            button3.TabIndex = 24;
+            button3.Text = "🔗";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(717, 225);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 23;
+            button4.Text = "Decode";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.Location = new Point(697, 13);
+            label17.Name = "label17";
+            label17.Size = new Size(114, 38);
+            label17.TabIndex = 22;
+            label17.Text = "Decode";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(648, 75);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(239, 27);
+            textBox5.TabIndex = 20;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(574, 78);
+            label18.Name = "label18";
+            label18.Size = new Size(68, 20);
+            label18.TabIndex = 21;
+            label18.Text = "File .wav:";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(21, 229);
+            label19.Name = "label19";
+            label19.Size = new Size(126, 20);
+            label19.TabIndex = 19;
+            label19.Text = "Output File name:";
+            // 
+            // outputWavName
+            // 
+            outputWavName.Location = new Point(153, 229);
+            outputWavName.Name = "outputWavName";
+            outputWavName.Size = new Size(239, 27);
+            outputWavName.TabIndex = 18;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(32, 196);
+            label20.Name = "label20";
+            label20.Size = new Size(115, 20);
+            label20.TabIndex = 17;
+            label20.Text = "Output browser:";
+            // 
+            // btnOutputBrowser
+            // 
+            btnOutputBrowser.Location = new Point(398, 193);
+            btnOutputBrowser.Name = "btnOutputBrowser";
+            btnOutputBrowser.Size = new Size(41, 29);
+            btnOutputBrowser.TabIndex = 16;
+            btnOutputBrowser.Text = "🔗";
+            btnOutputBrowser.UseVisualStyleBackColor = true;
+            btnOutputBrowser.Click += btnOutputBrowser_Click;
+            // 
+            // outputWavBrowser
+            // 
+            outputWavBrowser.Location = new Point(153, 193);
+            outputWavBrowser.Name = "outputWavBrowser";
+            outputWavBrowser.Size = new Size(239, 27);
+            outputWavBrowser.TabIndex = 15;
+            // 
+            // btnInputWav
+            // 
+            btnInputWav.Location = new Point(398, 154);
+            btnInputWav.Name = "btnInputWav";
+            btnInputWav.Size = new Size(41, 29);
+            btnInputWav.TabIndex = 14;
+            btnInputWav.Text = "🔗";
+            btnInputWav.UseVisualStyleBackColor = true;
+            btnInputWav.Click += btnInputWav_Click;
+            // 
+            // encodeWavBtn
+            // 
+            encodeWavBtn.Location = new Point(222, 264);
+            encodeWavBtn.Name = "encodeWavBtn";
+            encodeWavBtn.Size = new Size(94, 29);
+            encodeWavBtn.TabIndex = 13;
+            encodeWavBtn.Text = "Encode";
+            encodeWavBtn.UseVisualStyleBackColor = true;
+            encodeWavBtn.Click += encodeWavBtn_Click;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label21.Location = new Point(209, 13);
+            label21.Name = "label21";
+            label21.Size = new Size(110, 38);
+            label21.TabIndex = 12;
+            label21.Text = "Encode";
+            // 
+            // fileInputWav
+            // 
+            fileInputWav.Location = new Point(153, 155);
+            fileInputWav.Name = "fileInputWav";
+            fileInputWav.Size = new Size(239, 27);
+            fileInputWav.TabIndex = 10;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(77, 158);
+            label22.Name = "label22";
+            label22.Size = new Size(68, 20);
+            label22.TabIndex = 11;
+            label22.Text = "File .wav:";
             // 
             // imagePanel
             // 
@@ -485,6 +759,8 @@ namespace TextBuster
             Name = "HideNSeekWord";
             Text = "HideNSeekWord";
             mainPanel.ResumeLayout(false);
+            audioPanel.ResumeLayout(false);
+            audioPanel.PerformLayout();
             imagePanel.ResumeLayout(false);
             imagePanel.PerformLayout();
             panelDictionnary.ResumeLayout(false);
@@ -535,5 +811,31 @@ namespace TextBuster
         private TextBox filePngKeyJsonInput;
         private Label label12;
         private Button btnFilePngKey;
+        private Panel audioPanel;
+        private Button button1;
+        private TextBox textBox1;
+        private Label label13;
+        private Label label14;
+        private TextBox messageAudio;
+        private Label label15;
+        private TextBox textBox3;
+        private Label label16;
+        private Button button2;
+        private TextBox textBox4;
+        private Button button3;
+        private Button button4;
+        private Label label17;
+        private TextBox textBox5;
+        private Label label18;
+        private Label label19;
+        private TextBox outputWavName;
+        private Label label20;
+        private Button btnOutputBrowser;
+        private TextBox outputWavBrowser;
+        private Button btnInputWav;
+        private Button encodeWavBtn;
+        private Label label21;
+        private TextBox fileInputWav;
+        private Label label22;
     }
 }
