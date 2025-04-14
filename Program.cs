@@ -37,11 +37,13 @@ namespace TextBuster
             // audioEncoder.EncodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav");
             // audioEncoder.GiveKey("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
 
-            AudioDecoder audioDecoder = new AudioDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
-            audioDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink.txt");
-            
-            // ApplicationConfiguration.Initialize();
-            // Application.Run(new Form1());
+            // AudioDecoder audioDecoder = new AudioDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
+            // audioDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink.txt");
+
+            global::System.Windows.Forms.Application.EnableVisualStyles();
+            global::System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+            global::System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.Run(new HideNSeekWord());
         }
     }
 }
