@@ -35,20 +35,20 @@ namespace TextBuster
             audioBtn = new Button();
             mainPanel = new Panel();
             audioPanel = new Panel();
-            button1 = new Button();
-            textBox1 = new TextBox();
+            btnWavKeyDecode = new Button();
+            fileDecodeKeyInput = new TextBox();
             label13 = new Label();
             label14 = new Label();
             messageAudio = new TextBox();
             label15 = new Label();
-            textBox3 = new TextBox();
+            outputNameWavDecoded = new TextBox();
             label16 = new Label();
-            button2 = new Button();
-            textBox4 = new TextBox();
-            button3 = new Button();
-            button4 = new Button();
+            btnOutputBrowserWav = new Button();
+            outputDecodeBrowserWav = new TextBox();
+            btnInputDecode = new Button();
+            btnDecodeWav = new Button();
             label17 = new Label();
-            textBox5 = new TextBox();
+            inputDecodeWav = new TextBox();
             label18 = new Label();
             label19 = new Label();
             outputWavName = new TextBox();
@@ -134,6 +134,7 @@ namespace TextBuster
             audioBtn.TabIndex = 2;
             audioBtn.Text = "Audio";
             audioBtn.UseVisualStyleBackColor = true;
+            audioBtn.Click += audioBtn_Click;
             // 
             // mainPanel
             // 
@@ -145,20 +146,20 @@ namespace TextBuster
             // 
             // audioPanel
             // 
-            audioPanel.Controls.Add(button1);
-            audioPanel.Controls.Add(textBox1);
+            audioPanel.Controls.Add(btnWavKeyDecode);
+            audioPanel.Controls.Add(fileDecodeKeyInput);
             audioPanel.Controls.Add(label13);
             audioPanel.Controls.Add(label14);
             audioPanel.Controls.Add(messageAudio);
             audioPanel.Controls.Add(label15);
-            audioPanel.Controls.Add(textBox3);
+            audioPanel.Controls.Add(outputNameWavDecoded);
             audioPanel.Controls.Add(label16);
-            audioPanel.Controls.Add(button2);
-            audioPanel.Controls.Add(textBox4);
-            audioPanel.Controls.Add(button3);
-            audioPanel.Controls.Add(button4);
+            audioPanel.Controls.Add(btnOutputBrowserWav);
+            audioPanel.Controls.Add(outputDecodeBrowserWav);
+            audioPanel.Controls.Add(btnInputDecode);
+            audioPanel.Controls.Add(btnDecodeWav);
             audioPanel.Controls.Add(label17);
-            audioPanel.Controls.Add(textBox5);
+            audioPanel.Controls.Add(inputDecodeWav);
             audioPanel.Controls.Add(label18);
             audioPanel.Controls.Add(label19);
             audioPanel.Controls.Add(outputWavName);
@@ -175,21 +176,22 @@ namespace TextBuster
             audioPanel.Size = new Size(961, 299);
             audioPanel.TabIndex = 1;
             // 
-            // button1
+            // btnWavKeyDecode
             // 
-            button1.Location = new Point(893, 106);
-            button1.Name = "button1";
-            button1.Size = new Size(41, 29);
-            button1.TabIndex = 34;
-            button1.Text = "🔗";
-            button1.UseVisualStyleBackColor = true;
+            btnWavKeyDecode.Location = new Point(893, 106);
+            btnWavKeyDecode.Name = "btnWavKeyDecode";
+            btnWavKeyDecode.Size = new Size(41, 29);
+            btnWavKeyDecode.TabIndex = 34;
+            btnWavKeyDecode.Text = "🔗";
+            btnWavKeyDecode.UseVisualStyleBackColor = true;
+            btnWavKeyDecode.Click += btnWavKeyDecode_Click;
             // 
-            // textBox1
+            // fileDecodeKeyInput
             // 
-            textBox1.Location = new Point(648, 108);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(239, 27);
-            textBox1.TabIndex = 33;
+            fileDecodeKeyInput.Location = new Point(648, 108);
+            fileDecodeKeyInput.Name = "fileDecodeKeyInput";
+            fileDecodeKeyInput.Size = new Size(239, 27);
+            fileDecodeKeyInput.TabIndex = 33;
             // 
             // label13
             // 
@@ -226,12 +228,12 @@ namespace TextBuster
             label15.TabIndex = 29;
             label15.Text = "Output File name:";
             // 
-            // textBox3
+            // outputNameWavDecoded
             // 
-            textBox3.Location = new Point(648, 177);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(239, 27);
-            textBox3.TabIndex = 28;
+            outputNameWavDecoded.Location = new Point(648, 177);
+            outputNameWavDecoded.Name = "outputNameWavDecoded";
+            outputNameWavDecoded.Size = new Size(239, 27);
+            outputNameWavDecoded.TabIndex = 28;
             // 
             // label16
             // 
@@ -242,39 +244,42 @@ namespace TextBuster
             label16.TabIndex = 27;
             label16.Text = "Output browser:";
             // 
-            // button2
+            // btnOutputBrowserWav
             // 
-            button2.Location = new Point(893, 141);
-            button2.Name = "button2";
-            button2.Size = new Size(41, 29);
-            button2.TabIndex = 26;
-            button2.Text = "🔗";
-            button2.UseVisualStyleBackColor = true;
+            btnOutputBrowserWav.Location = new Point(893, 141);
+            btnOutputBrowserWav.Name = "btnOutputBrowserWav";
+            btnOutputBrowserWav.Size = new Size(41, 29);
+            btnOutputBrowserWav.TabIndex = 26;
+            btnOutputBrowserWav.Text = "🔗";
+            btnOutputBrowserWav.UseVisualStyleBackColor = true;
+            btnOutputBrowserWav.Click += btnOutputBrowserWav_Click;
             // 
-            // textBox4
+            // outputDecodeBrowserWav
             // 
-            textBox4.Location = new Point(648, 141);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(239, 27);
-            textBox4.TabIndex = 25;
+            outputDecodeBrowserWav.Location = new Point(648, 141);
+            outputDecodeBrowserWav.Name = "outputDecodeBrowserWav";
+            outputDecodeBrowserWav.Size = new Size(239, 27);
+            outputDecodeBrowserWav.TabIndex = 25;
             // 
-            // button3
+            // btnInputDecode
             // 
-            button3.Location = new Point(893, 74);
-            button3.Name = "button3";
-            button3.Size = new Size(41, 29);
-            button3.TabIndex = 24;
-            button3.Text = "🔗";
-            button3.UseVisualStyleBackColor = true;
+            btnInputDecode.Location = new Point(893, 74);
+            btnInputDecode.Name = "btnInputDecode";
+            btnInputDecode.Size = new Size(41, 29);
+            btnInputDecode.TabIndex = 24;
+            btnInputDecode.Text = "🔗";
+            btnInputDecode.UseVisualStyleBackColor = true;
+            btnInputDecode.Click += btnInputDecode_Click;
             // 
-            // button4
+            // btnDecodeWav
             // 
-            button4.Location = new Point(717, 225);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 23;
-            button4.Text = "Decode";
-            button4.UseVisualStyleBackColor = true;
+            btnDecodeWav.Location = new Point(717, 225);
+            btnDecodeWav.Name = "btnDecodeWav";
+            btnDecodeWav.Size = new Size(94, 29);
+            btnDecodeWav.TabIndex = 23;
+            btnDecodeWav.Text = "Decode";
+            btnDecodeWav.UseVisualStyleBackColor = true;
+            btnDecodeWav.Click += btnDecodeWav_Click;
             // 
             // label17
             // 
@@ -286,12 +291,12 @@ namespace TextBuster
             label17.TabIndex = 22;
             label17.Text = "Decode";
             // 
-            // textBox5
+            // inputDecodeWav
             // 
-            textBox5.Location = new Point(648, 75);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(239, 27);
-            textBox5.TabIndex = 20;
+            inputDecodeWav.Location = new Point(648, 75);
+            inputDecodeWav.Name = "inputDecodeWav";
+            inputDecodeWav.Size = new Size(239, 27);
+            inputDecodeWav.TabIndex = 20;
             // 
             // label18
             // 
@@ -812,20 +817,20 @@ namespace TextBuster
         private Label label12;
         private Button btnFilePngKey;
         private Panel audioPanel;
-        private Button button1;
-        private TextBox textBox1;
+        private Button btnWavKeyDecode;
+        private TextBox fileDecodeKeyInput;
         private Label label13;
         private Label label14;
         private TextBox messageAudio;
         private Label label15;
-        private TextBox textBox3;
+        private TextBox outputNameWavDecoded;
         private Label label16;
-        private Button button2;
-        private TextBox textBox4;
-        private Button button3;
-        private Button button4;
+        private Button btnOutputBrowserWav;
+        private TextBox outputDecodeBrowserWav;
+        private Button btnInputDecode;
+        private Button btnDecodeWav;
         private Label label17;
-        private TextBox textBox5;
+        private TextBox inputDecodeWav;
         private Label label18;
         private Label label19;
         private TextBox outputWavName;

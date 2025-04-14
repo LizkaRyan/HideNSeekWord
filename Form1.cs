@@ -244,5 +244,78 @@ namespace TextBuster
             audioEncoder.GiveKey(outputWavBrowser.Text + "\\" + outputWavName.Text + "_key.json");
             Cursor = Cursors.Default;
         }
+
+        private void btnInputDecode_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "C:\\";
+                openFileDialog.Filter = "Tous les fichiers (*.wav)|*.wav";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    inputDecodeWav.Text = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void btnWavKeyDecode_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "C:\\";
+                openFileDialog.Filter = "Tous les fichiers (*.json)|*.json";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileDecodeKeyInput.Text = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void btnOutputBrowserWav_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowser = new FolderBrowserDialog())
+            {
+                // Optionnel : Définir le dossier racine (par défaut : Bureau)
+                folderBrowser.RootFolder = Environment.SpecialFolder.Desktop;
+
+                // Optionnel : Définir la description
+                folderBrowser.Description = "Veuillez sélectionner un dossier.";
+
+                // Optionnel : Permettre la création de nouveaux dossiers
+                folderBrowser.ShowNewFolderButton = true;
+
+                // Affiche la boîte de dialogue et récupère le résultat
+                DialogResult result = folderBrowser.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
+                {
+                    outputDecodeBrowserWav.Text = folderBrowser.SelectedPath;
+                }
+                else
+                {
+                    Console.WriteLine("Aucun dossier sélectionné.");
+                }
+            }
+        }
+
+        private void btnDecodeWav_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            AudioDecoder audioDecoder = new AudioDecoder(inputDecodeWav.Text, fileDecodeKeyInput.Text);
+            audioDecoder.DecodeAndSaveTo(outputDecodeBrowserWav.Text + "\\" + outputNameWavDecoded.Text + ".txt");
+            Cursor = Cursors.Default;
+        }
+
+        private void audioBtn_Click(object sender, EventArgs e)
+        {
+            this.mainPanel.Controls.Clear();
+            this.mainPanel.Controls.Add(audioPanel);
+        }
     }
 }
