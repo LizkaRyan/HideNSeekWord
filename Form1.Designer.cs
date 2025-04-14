@@ -34,6 +34,29 @@ namespace TextBuster
             imageBtn = new Button();
             audioBtn = new Button();
             mainPanel = new Panel();
+            imagePanel = new Panel();
+            label11 = new Label();
+            messagePngInput = new TextBox();
+            label7 = new Label();
+            textBox4 = new TextBox();
+            label8 = new Label();
+            button4 = new Button();
+            textBox5 = new TextBox();
+            button5 = new Button();
+            button6 = new Button();
+            label9 = new Label();
+            textBox6 = new TextBox();
+            label10 = new Label();
+            label3 = new Label();
+            pngEncodeFileNameInput = new TextBox();
+            label4 = new Label();
+            btnBrowserPng = new Button();
+            outputPngBrowser = new TextBox();
+            btnFilePng = new Button();
+            encodeBtn = new Button();
+            label5 = new Label();
+            filePngInput = new TextBox();
+            label6 = new Label();
             panelDictionnary = new Panel();
             label2 = new Label();
             outputFileTxtName = new TextBox();
@@ -46,6 +69,7 @@ namespace TextBuster
             fileTxtInput = new TextBox();
             labelFileTxt = new Label();
             mainPanel.SuspendLayout();
+            imagePanel.SuspendLayout();
             panelDictionnary.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,6 +93,7 @@ namespace TextBuster
             imageBtn.TabIndex = 1;
             imageBtn.Text = "Image";
             imageBtn.UseVisualStyleBackColor = true;
+            imageBtn.Click += imageBtn_Click;
             // 
             // audioBtn
             // 
@@ -82,11 +107,230 @@ namespace TextBuster
             // 
             // mainPanel
             // 
-            mainPanel.Controls.Add(panelDictionnary);
+            mainPanel.Controls.Add(imagePanel);
             mainPanel.Location = new Point(0, 63);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(964, 311);
             mainPanel.TabIndex = 3;
+            // 
+            // imagePanel
+            // 
+            imagePanel.Controls.Add(label11);
+            imagePanel.Controls.Add(messagePngInput);
+            imagePanel.Controls.Add(label7);
+            imagePanel.Controls.Add(textBox4);
+            imagePanel.Controls.Add(label8);
+            imagePanel.Controls.Add(button4);
+            imagePanel.Controls.Add(textBox5);
+            imagePanel.Controls.Add(button5);
+            imagePanel.Controls.Add(button6);
+            imagePanel.Controls.Add(label9);
+            imagePanel.Controls.Add(textBox6);
+            imagePanel.Controls.Add(label10);
+            imagePanel.Controls.Add(label3);
+            imagePanel.Controls.Add(pngEncodeFileNameInput);
+            imagePanel.Controls.Add(label4);
+            imagePanel.Controls.Add(btnBrowserPng);
+            imagePanel.Controls.Add(outputPngBrowser);
+            imagePanel.Controls.Add(btnFilePng);
+            imagePanel.Controls.Add(encodeBtn);
+            imagePanel.Controls.Add(label5);
+            imagePanel.Controls.Add(filePngInput);
+            imagePanel.Controls.Add(label6);
+            imagePanel.Location = new Point(0, 3);
+            imagePanel.Name = "imagePanel";
+            imagePanel.Size = new Size(961, 299);
+            imagePanel.TabIndex = 0;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(77, 60);
+            label11.Name = "label11";
+            label11.Size = new Size(70, 20);
+            label11.TabIndex = 31;
+            label11.Text = "Message:";
+            // 
+            // messagePngInput
+            // 
+            messagePngInput.Location = new Point(154, 60);
+            messagePngInput.Multiline = true;
+            messagePngInput.Name = "messagePngInput";
+            messagePngInput.Size = new Size(283, 88);
+            messagePngInput.TabIndex = 30;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(518, 182);
+            label7.Name = "label7";
+            label7.Size = new Size(126, 20);
+            label7.TabIndex = 29;
+            label7.Text = "Output File name:";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(650, 182);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(239, 27);
+            textBox4.TabIndex = 28;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(529, 149);
+            label8.Name = "label8";
+            label8.Size = new Size(115, 20);
+            label8.TabIndex = 27;
+            label8.Text = "Output browser:";
+            // 
+            // button4
+            // 
+            button4.Location = new Point(895, 146);
+            button4.Name = "button4";
+            button4.Size = new Size(41, 29);
+            button4.TabIndex = 26;
+            button4.Text = "🔗";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(650, 146);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(239, 27);
+            textBox5.TabIndex = 25;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(895, 107);
+            button5.Name = "button5";
+            button5.Size = new Size(41, 29);
+            button5.TabIndex = 24;
+            button5.Text = "🔗";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(719, 217);
+            button6.Name = "button6";
+            button6.Size = new Size(94, 29);
+            button6.TabIndex = 23;
+            button6.Text = "Create";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(699, 46);
+            label9.Name = "label9";
+            label9.Size = new Size(114, 38);
+            label9.TabIndex = 22;
+            label9.Text = "Decode";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(650, 108);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(239, 27);
+            textBox6.TabIndex = 20;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(585, 111);
+            label10.Name = "label10";
+            label10.Size = new Size(59, 20);
+            label10.TabIndex = 21;
+            label10.Text = "File .txt:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(21, 229);
+            label3.Name = "label3";
+            label3.Size = new Size(126, 20);
+            label3.TabIndex = 19;
+            label3.Text = "Output File name:";
+            // 
+            // pngEncodeFileNameInput
+            // 
+            pngEncodeFileNameInput.Location = new Point(153, 229);
+            pngEncodeFileNameInput.Name = "pngEncodeFileNameInput";
+            pngEncodeFileNameInput.Size = new Size(239, 27);
+            pngEncodeFileNameInput.TabIndex = 18;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(32, 196);
+            label4.Name = "label4";
+            label4.Size = new Size(115, 20);
+            label4.TabIndex = 17;
+            label4.Text = "Output browser:";
+            // 
+            // btnBrowserPng
+            // 
+            btnBrowserPng.Location = new Point(398, 193);
+            btnBrowserPng.Name = "btnBrowserPng";
+            btnBrowserPng.Size = new Size(41, 29);
+            btnBrowserPng.TabIndex = 16;
+            btnBrowserPng.Text = "🔗";
+            btnBrowserPng.UseVisualStyleBackColor = true;
+            btnBrowserPng.Click += btnBrowserPng_Click;
+            // 
+            // outputPngBrowser
+            // 
+            outputPngBrowser.Location = new Point(153, 193);
+            outputPngBrowser.Name = "outputPngBrowser";
+            outputPngBrowser.Size = new Size(239, 27);
+            outputPngBrowser.TabIndex = 15;
+            // 
+            // btnFilePng
+            // 
+            btnFilePng.Location = new Point(398, 154);
+            btnFilePng.Name = "btnFilePng";
+            btnFilePng.Size = new Size(41, 29);
+            btnFilePng.TabIndex = 14;
+            btnFilePng.Text = "🔗";
+            btnFilePng.UseVisualStyleBackColor = true;
+            btnFilePng.Click += btnFilePng_Click;
+            // 
+            // encodeBtn
+            // 
+            encodeBtn.Location = new Point(222, 264);
+            encodeBtn.Name = "encodeBtn";
+            encodeBtn.Size = new Size(94, 29);
+            encodeBtn.TabIndex = 13;
+            encodeBtn.Text = "Encode";
+            encodeBtn.UseVisualStyleBackColor = true;
+            encodeBtn.Click += encodeBtn_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(209, 13);
+            label5.Name = "label5";
+            label5.Size = new Size(110, 38);
+            label5.TabIndex = 12;
+            label5.Text = "Encode";
+            // 
+            // filePngInput
+            // 
+            filePngInput.Location = new Point(153, 155);
+            filePngInput.Name = "filePngInput";
+            filePngInput.Size = new Size(239, 27);
+            filePngInput.TabIndex = 10;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(79, 158);
+            label6.Name = "label6";
+            label6.Size = new Size(68, 20);
+            label6.TabIndex = 11;
+            label6.Text = "File .png:";
             // 
             // panelDictionnary
             // 
@@ -163,7 +407,7 @@ namespace TextBuster
             createFileDicoBtn.Name = "createFileDicoBtn";
             createFileDicoBtn.Size = new Size(94, 29);
             createFileDicoBtn.TabIndex = 3;
-            createFileDicoBtn.Text = "Créer";
+            createFileDicoBtn.Text = "Create";
             createFileDicoBtn.UseVisualStyleBackColor = true;
             createFileDicoBtn.Click += createFileDicoBtn_Click;
             // 
@@ -206,6 +450,8 @@ namespace TextBuster
             Name = "HideNSeekWord";
             Text = "HideNSeekWord";
             mainPanel.ResumeLayout(false);
+            imagePanel.ResumeLayout(false);
+            imagePanel.PerformLayout();
             panelDictionnary.ResumeLayout(false);
             panelDictionnary.PerformLayout();
             ResumeLayout(false);
@@ -228,5 +474,28 @@ namespace TextBuster
         private Label label1;
         private Button btnFileOutputBrowserTxt;
         private TextBox browserOutputTxtName;
+        private Panel imagePanel;
+        private Label label7;
+        private TextBox textBox4;
+        private Label label8;
+        private Button button4;
+        private TextBox textBox5;
+        private Button button5;
+        private Button button6;
+        private Label label9;
+        private TextBox textBox6;
+        private Label label10;
+        private Label label3;
+        private TextBox pngEncodeFileNameInput;
+        private Label label4;
+        private Button btnBrowserPng;
+        private TextBox outputPngBrowser;
+        private Button btnFilePng;
+        private Button encodeBtn;
+        private Label label5;
+        private TextBox filePngInput;
+        private Label label6;
+        private Label label11;
+        private TextBox messagePngInput;
     }
 }
