@@ -35,17 +35,20 @@ namespace TextBuster
             audioBtn = new Button();
             mainPanel = new Panel();
             imagePanel = new Panel();
+            btnFilePngKey = new Button();
+            filePngKeyJsonInput = new TextBox();
+            label12 = new Label();
             label11 = new Label();
             messagePngInput = new TextBox();
             label7 = new Label();
-            textBox4 = new TextBox();
+            outputPngDecoderFileName = new TextBox();
             label8 = new Label();
-            button4 = new Button();
-            textBox5 = new TextBox();
-            button5 = new Button();
-            button6 = new Button();
+            btnBrowserOutput = new Button();
+            pngOutputDecodeBrowser = new TextBox();
+            btnDecodeInputPng = new Button();
+            decodePngBtn = new Button();
             label9 = new Label();
-            textBox6 = new TextBox();
+            pngFileInputDecode = new TextBox();
             label10 = new Label();
             label3 = new Label();
             pngEncodeFileNameInput = new TextBox();
@@ -115,17 +118,20 @@ namespace TextBuster
             // 
             // imagePanel
             // 
+            imagePanel.Controls.Add(btnFilePngKey);
+            imagePanel.Controls.Add(filePngKeyJsonInput);
+            imagePanel.Controls.Add(label12);
             imagePanel.Controls.Add(label11);
             imagePanel.Controls.Add(messagePngInput);
             imagePanel.Controls.Add(label7);
-            imagePanel.Controls.Add(textBox4);
+            imagePanel.Controls.Add(outputPngDecoderFileName);
             imagePanel.Controls.Add(label8);
-            imagePanel.Controls.Add(button4);
-            imagePanel.Controls.Add(textBox5);
-            imagePanel.Controls.Add(button5);
-            imagePanel.Controls.Add(button6);
+            imagePanel.Controls.Add(btnBrowserOutput);
+            imagePanel.Controls.Add(pngOutputDecodeBrowser);
+            imagePanel.Controls.Add(btnDecodeInputPng);
+            imagePanel.Controls.Add(decodePngBtn);
             imagePanel.Controls.Add(label9);
-            imagePanel.Controls.Add(textBox6);
+            imagePanel.Controls.Add(pngFileInputDecode);
             imagePanel.Controls.Add(label10);
             imagePanel.Controls.Add(label3);
             imagePanel.Controls.Add(pngEncodeFileNameInput);
@@ -141,6 +147,32 @@ namespace TextBuster
             imagePanel.Name = "imagePanel";
             imagePanel.Size = new Size(961, 299);
             imagePanel.TabIndex = 0;
+            // 
+            // btnFilePngKey
+            // 
+            btnFilePngKey.Location = new Point(893, 106);
+            btnFilePngKey.Name = "btnFilePngKey";
+            btnFilePngKey.Size = new Size(41, 29);
+            btnFilePngKey.TabIndex = 34;
+            btnFilePngKey.Text = "🔗";
+            btnFilePngKey.UseVisualStyleBackColor = true;
+            btnFilePngKey.Click += btnFilePngKey_Click;
+            // 
+            // filePngKeyJsonInput
+            // 
+            filePngKeyJsonInput.Location = new Point(648, 108);
+            filePngKeyJsonInput.Name = "filePngKeyJsonInput";
+            filePngKeyJsonInput.Size = new Size(239, 27);
+            filePngKeyJsonInput.TabIndex = 33;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(547, 111);
+            label12.Name = "label12";
+            label12.Size = new Size(95, 20);
+            label12.TabIndex = 32;
+            label12.Text = "File key .json:";
             // 
             // label11
             // 
@@ -162,87 +194,90 @@ namespace TextBuster
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(518, 182);
+            label7.Location = new Point(516, 177);
             label7.Name = "label7";
             label7.Size = new Size(126, 20);
             label7.TabIndex = 29;
             label7.Text = "Output File name:";
             // 
-            // textBox4
+            // outputPngDecoderFileName
             // 
-            textBox4.Location = new Point(650, 182);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(239, 27);
-            textBox4.TabIndex = 28;
+            outputPngDecoderFileName.Location = new Point(648, 177);
+            outputPngDecoderFileName.Name = "outputPngDecoderFileName";
+            outputPngDecoderFileName.Size = new Size(239, 27);
+            outputPngDecoderFileName.TabIndex = 28;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(529, 149);
+            label8.Location = new Point(527, 144);
             label8.Name = "label8";
             label8.Size = new Size(115, 20);
             label8.TabIndex = 27;
             label8.Text = "Output browser:";
             // 
-            // button4
+            // btnBrowserOutput
             // 
-            button4.Location = new Point(895, 146);
-            button4.Name = "button4";
-            button4.Size = new Size(41, 29);
-            button4.TabIndex = 26;
-            button4.Text = "🔗";
-            button4.UseVisualStyleBackColor = true;
+            btnBrowserOutput.Location = new Point(893, 141);
+            btnBrowserOutput.Name = "btnBrowserOutput";
+            btnBrowserOutput.Size = new Size(41, 29);
+            btnBrowserOutput.TabIndex = 26;
+            btnBrowserOutput.Text = "🔗";
+            btnBrowserOutput.UseVisualStyleBackColor = true;
+            btnBrowserOutput.Click += btnBrowserOutput_Click;
             // 
-            // textBox5
+            // pngOutputDecodeBrowser
             // 
-            textBox5.Location = new Point(650, 146);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(239, 27);
-            textBox5.TabIndex = 25;
+            pngOutputDecodeBrowser.Location = new Point(648, 141);
+            pngOutputDecodeBrowser.Name = "pngOutputDecodeBrowser";
+            pngOutputDecodeBrowser.Size = new Size(239, 27);
+            pngOutputDecodeBrowser.TabIndex = 25;
             // 
-            // button5
+            // btnDecodeInputPng
             // 
-            button5.Location = new Point(895, 107);
-            button5.Name = "button5";
-            button5.Size = new Size(41, 29);
-            button5.TabIndex = 24;
-            button5.Text = "🔗";
-            button5.UseVisualStyleBackColor = true;
+            btnDecodeInputPng.Location = new Point(893, 74);
+            btnDecodeInputPng.Name = "btnDecodeInputPng";
+            btnDecodeInputPng.Size = new Size(41, 29);
+            btnDecodeInputPng.TabIndex = 24;
+            btnDecodeInputPng.Text = "🔗";
+            btnDecodeInputPng.UseVisualStyleBackColor = true;
+            btnDecodeInputPng.Click += btnDecodeInputPng_Click;
             // 
-            // button6
+            // decodePngBtn
             // 
-            button6.Location = new Point(719, 217);
-            button6.Name = "button6";
-            button6.Size = new Size(94, 29);
-            button6.TabIndex = 23;
-            button6.Text = "Create";
-            button6.UseVisualStyleBackColor = true;
+            decodePngBtn.Location = new Point(717, 225);
+            decodePngBtn.Name = "decodePngBtn";
+            decodePngBtn.Size = new Size(94, 29);
+            decodePngBtn.TabIndex = 23;
+            decodePngBtn.Text = "Decode";
+            decodePngBtn.UseVisualStyleBackColor = true;
+            decodePngBtn.Click += decodePngBtn_Click;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(699, 46);
+            label9.Location = new Point(697, 13);
             label9.Name = "label9";
             label9.Size = new Size(114, 38);
             label9.TabIndex = 22;
             label9.Text = "Decode";
             // 
-            // textBox6
+            // pngFileInputDecode
             // 
-            textBox6.Location = new Point(650, 108);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(239, 27);
-            textBox6.TabIndex = 20;
+            pngFileInputDecode.Location = new Point(648, 75);
+            pngFileInputDecode.Name = "pngFileInputDecode";
+            pngFileInputDecode.Size = new Size(239, 27);
+            pngFileInputDecode.TabIndex = 20;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(585, 111);
+            label10.Location = new Point(574, 78);
             label10.Name = "label10";
-            label10.Size = new Size(59, 20);
+            label10.Size = new Size(68, 20);
             label10.TabIndex = 21;
-            label10.Text = "File .txt:";
+            label10.Text = "File .png:";
             // 
             // label3
             // 
@@ -476,14 +511,14 @@ namespace TextBuster
         private TextBox browserOutputTxtName;
         private Panel imagePanel;
         private Label label7;
-        private TextBox textBox4;
+        private TextBox outputPngDecoderFileName;
         private Label label8;
-        private Button button4;
-        private TextBox textBox5;
-        private Button button5;
-        private Button button6;
+        private Button btnBrowserOutput;
+        private TextBox pngOutputDecodeBrowser;
+        private Button btnDecodeInputPng;
+        private Button decodePngBtn;
         private Label label9;
-        private TextBox textBox6;
+        private TextBox pngFileInputDecode;
         private Label label10;
         private Label label3;
         private TextBox pngEncodeFileNameInput;
@@ -497,5 +532,8 @@ namespace TextBuster
         private Label label6;
         private Label label11;
         private TextBox messagePngInput;
+        private TextBox filePngKeyJsonInput;
+        private Label label12;
+        private Button btnFilePngKey;
     }
 }
