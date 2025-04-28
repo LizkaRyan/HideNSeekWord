@@ -26,12 +26,12 @@ namespace TextBuster
             // fileDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\test_buster_decompressed.txt");
             // Console.WriteLine("VITA");
 
-            ImageEncoder imageEncoder = new ImageEncoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose.png","How would you feel? If i told you i love you. It's just something i want to do. Taking my time spending my life, Falling deeper in love with you. Tell me that you love me too");
-            imageEncoder.EncodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.png");
-            imageEncoder.GiveKey("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_key.json");
-            
-            ImageDecoder imageDecoder = new ImageDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.png","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_key.json");
-            imageDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.txt");
+            // ImageEncoder imageEncoder = new ImageEncoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose.png","How would you feel? If i told you i love you. It's just something i want to do. Taking my time spending my life, Falling deeper in love with you. Tell me that you love me too");
+            // imageEncoder.EncodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.png");
+            // imageEncoder.GiveKey("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_key.json");
+            //
+            // ImageDecoder imageDecoder = new ImageDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.png","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_key.json");
+            // imageDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\rose_encoded.txt");
 
             // AudioEncoder audioEncoder = new AudioEncoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\PinkPanther30.wav","My one and only love i've been lonely long enough will i find you when the night is over");
             // audioEncoder.EncodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav");
@@ -40,6 +40,7 @@ namespace TextBuster
             // AudioDecoder audioDecoder = new AudioDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
             // audioDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink.txt");
             //
+            
             // LanguageAnalyzer languageAnalyzer = new LanguageAnalyzer();
             // languageAnalyzer.Add("000");
             // languageAnalyzer.Add("010");

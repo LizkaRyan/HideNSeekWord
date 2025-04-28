@@ -1,3 +1,5 @@
+using System.Text.Json;
+using TextBuster.Coding;
 using TextBuster.Coding.FileBuster;
 using TextBuster.Steganography.Audio;
 using TextBuster.Steganography.Image;
@@ -316,6 +318,34 @@ namespace TextBuster
         {
             this.mainPanel.Controls.Clear();
             this.mainPanel.Controls.Add(audioPanel);
+        }
+
+        private void languageAnalyzerfileBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "C:\\";
+                openFileDialog.Filter = "Tous les fichiers (*.json)|*.json";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileKeyNameTextBox.Text = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void isItALanguageBtn_Click(object sender, EventArgs e)
+        {
+            KeyDecoder keyDecoder = JsonSerializer.Deserialize<KeyDecoder>(File.ReadAllText(fileKeyNameTextBox.Text));
+            labelIsALanguage.Text = "It is not a language";
+            panelIsALanguage.BackColor = Color.Red;
+            if (keyDecoder.IsALanguage())
+            {
+                panelIsALanguage.BackColor = Color.Green;
+                labelIsALanguage.Text = "This is a language";
+            }
         }
     }
 }
