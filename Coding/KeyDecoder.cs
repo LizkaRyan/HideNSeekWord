@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using TextBuster.Coding.Tree;
+using Random = TextBuster.Steganography.Random;
 
 namespace TextBuster.Coding;
 
@@ -10,8 +11,20 @@ public class KeyDecoder
     private int _maxLengthByte;
 
     private string _content;
+
+    private int _lengthMessage;
     
+    public int LengthMessage
+    {
+        get { return _lengthMessage; }
+        set { _lengthMessage = value; }
+    }
+
     public string Content => _content;
+
+    public Random _random;
+    
+    public Random Random => _random;
     
     public Dictionary<string,string> Dico {get => _dico; set => _dico = value; }
     
@@ -23,6 +36,7 @@ public class KeyDecoder
     public KeyDecoder()
     {
         _maxLengthByte = 0;
+        _random = new Random(5);
     }
 
     public KeyDecoder(Dictionary<string, string> dictionary)
@@ -46,7 +60,6 @@ public class KeyDecoder
         graphs.CreateTree();
         return graphs.CreateKeyDecoder(this);
     }
-        
     
     public KeyDecoder Invert()
     {

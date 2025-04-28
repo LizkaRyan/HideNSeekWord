@@ -56,10 +56,11 @@ public class ImageDecoder:Decoder
     {
         KeyImageDecoder keyDecoder = (KeyImageDecoder)this._key;
         string content = "";
-        foreach (int randomPlace in keyDecoder.RandomPlace)
+        int place = (int)this._key.Random.InitValue;
+        for (int i = 0;i<this._key.LengthMessage;i++)
         {
-            string bytesString = Convert.ToString(this._bytesRGB[randomPlace], 2).PadLeft(8, '0');
-            content += (this._bytesRGB[randomPlace] & 1) == 1 ? "1" : "0";
+            content += (this._bytesRGB[(place*3)+1] & 1) == 1 ? "1" : "0";
+            place += this._key.Random.NextInt();
         }
         return content;
     }

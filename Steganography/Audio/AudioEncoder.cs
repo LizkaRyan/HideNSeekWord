@@ -27,20 +27,19 @@ public class AudioEncoder:Encoder
         string contentEncoded = BinarizeContent();
         this._bytes = new ByteCollection(File.ReadAllBytes(this._filePath));
 
-        int index = 0;
         KeyAudioDecoder keyDecoder = (KeyAudioDecoder)this._key;
-        keyDecoder.SetRandomPlace(FindDataChunkStart(),this._bytes.Count,contentEncoded.Length);
-        foreach (int place in keyDecoder.RandomPlace)
+        int place = FindDataChunkStart() + (int)keyDecoder.Random.InitValue;
+        for (int i=0;i<contentEncoded.Length;i++)
         {
             try
             {
-                this.ChangeLastByteTo(contentEncoded[index],place);
+                ChangeLastByteTo(contentEncoded[i],place);
+                place += keyDecoder.Random.NextInt();
             }
             catch (IndexOutOfRangeException)
             {
                 break;
             }
-            index++;
         }
     }
 
