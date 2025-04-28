@@ -82,4 +82,10 @@ public class KeyDecoder
             }
         }
     }
+    
+    public bool IsALanguage()
+    {
+        LanguageAnalyzer languageAnalyzer = new LanguageAnalyzer(this._dico);
+        return languageAnalyzer.IsALanguage();
+    }
 }

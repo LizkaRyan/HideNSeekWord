@@ -39,11 +39,19 @@ namespace TextBuster
             //
             // AudioDecoder audioDecoder = new AudioDecoder("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_encoded.wav","C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink_key.json");
             // audioDecoder.DecodeAndSaveTo("C:\\Users\\ryrab\\Desktop\\Ryan\\Etudes\\S6\\steganographie\\Pink.txt");
-
-            // global::System.Windows.Forms.Application.EnableVisualStyles();
-            // global::System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            // global::System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            // Application.Run(new HideNSeekWord());
+            //
+            // LanguageAnalyzer languageAnalyzer = new LanguageAnalyzer();
+            // languageAnalyzer.Add("000");
+            // languageAnalyzer.Add("010");
+            // languageAnalyzer.Add("011");
+            // languageAnalyzer.Add("01001");
+            //
+            // Console.WriteLine(languageAnalyzer.IsALanguage());
+            
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.Run(new HideNSeekWord());
         }
     }
 }
