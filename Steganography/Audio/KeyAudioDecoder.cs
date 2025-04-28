@@ -8,12 +8,12 @@ public class KeyAudioDecoder:KeyDecoder
 
     public HashSet<int> RandomPlace {get => _randomPlace; set => _randomPlace = value; }
 
-    public void SetRandomPlace(int minRandom,int maxRandom,int length)
-    {
-        Random random = new Random();
-        while (_randomPlace.Count < length)
-        {
-            _randomPlace.Add(random.NextInt(minRandom,maxRandom));
-        }
-    }
+    // public void SetRandomPlace(int minRandom,int maxRandom,int length)
+    // {
+    //     Random random = new Random(2);
+    //     while (_randomPlace.Count < length)
+    //     {
+    //         _randomPlace.Add(random.NextInt(minRandom,maxRandom));
+    //     }
+    // }
 }
