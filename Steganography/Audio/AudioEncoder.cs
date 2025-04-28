@@ -28,7 +28,6 @@ public class AudioEncoder:Encoder
         this._bytes = new ByteCollection(File.ReadAllBytes(this._filePath));
 
         KeyAudioDecoder keyDecoder = (KeyAudioDecoder)this._key;
-        this._key.LengthMessage = contentEncoded.Length;
         int place = FindDataChunkStart() + (int)keyDecoder.Random.InitValue;
         for (int i=0;i<contentEncoded.Length;i++)
         {

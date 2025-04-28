@@ -24,6 +24,7 @@ public abstract class Encoder
         {
             byteString+=this.Key!.Dico[charachter.ToString()];
         }
+        this._key.LengthMessage = byteString.Length;
 
         return byteString;
     }

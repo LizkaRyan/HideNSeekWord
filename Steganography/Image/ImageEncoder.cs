@@ -73,7 +73,6 @@ public class ImageEncoder:Encoder
     private void ChangeLastByteTo(char value, int index)
     {
         KeyImageDecoder keyImageDecoder = (KeyImageDecoder)this._key!;
-        keyImageDecoder.AddRandomPlace(index);
         for (int i = (index * 3)+1; i < (index*3)+4; i++)
         {
             string binaryString = Convert.ToString(this._bytesRGB[i], 2).PadLeft(8, '0');
