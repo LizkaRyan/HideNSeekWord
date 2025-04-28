@@ -34,6 +34,14 @@ namespace TextBuster
             imageBtn = new Button();
             audioBtn = new Button();
             mainPanel = new Panel();
+            panelLanguageAnalyzer = new Panel();
+            panelIsALanguage = new Panel();
+            labelIsALanguage = new Label();
+            languageAnalyzerfileBtn = new Button();
+            isItALanguageBtn = new Button();
+            label24 = new Label();
+            fileKeyNameTextBox = new TextBox();
+            label23 = new Label();
             audioPanel = new Panel();
             btnWavKeyDecode = new Button();
             fileDecodeKeyInput = new TextBox();
@@ -97,7 +105,10 @@ namespace TextBuster
             TitleDictionnary = new Label();
             fileTxtInput = new TextBox();
             labelFileTxt = new Label();
+            btnLanguageAnalyzer = new Button();
             mainPanel.SuspendLayout();
+            panelLanguageAnalyzer.SuspendLayout();
+            panelIsALanguage.SuspendLayout();
             audioPanel.SuspendLayout();
             imagePanel.SuspendLayout();
             panelDictionnary.SuspendLayout();
@@ -138,11 +149,90 @@ namespace TextBuster
             // 
             // mainPanel
             // 
-            mainPanel.Controls.Add(audioPanel);
+            mainPanel.Controls.Add(panelLanguageAnalyzer);
             mainPanel.Location = new Point(0, 63);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(964, 311);
             mainPanel.TabIndex = 3;
+            // 
+            // panelLanguageAnalyzer
+            // 
+            panelLanguageAnalyzer.Controls.Add(panelIsALanguage);
+            panelLanguageAnalyzer.Controls.Add(languageAnalyzerfileBtn);
+            panelLanguageAnalyzer.Controls.Add(isItALanguageBtn);
+            panelLanguageAnalyzer.Controls.Add(label24);
+            panelLanguageAnalyzer.Controls.Add(fileKeyNameTextBox);
+            panelLanguageAnalyzer.Controls.Add(label23);
+            panelLanguageAnalyzer.Location = new Point(3, 3);
+            panelLanguageAnalyzer.Name = "panelLanguageAnalyzer";
+            panelLanguageAnalyzer.Size = new Size(958, 305);
+            panelLanguageAnalyzer.TabIndex = 0;
+            // 
+            // panelIsALanguage
+            // 
+            panelIsALanguage.BackColor = Color.Transparent;
+            panelIsALanguage.Controls.Add(labelIsALanguage);
+            panelIsALanguage.ForeColor = SystemColors.ActiveCaptionText;
+            panelIsALanguage.Location = new Point(372, 210);
+            panelIsALanguage.Name = "panelIsALanguage";
+            panelIsALanguage.Size = new Size(184, 44);
+            panelIsALanguage.TabIndex = 5;
+            // 
+            // labelIsALanguage
+            // 
+            labelIsALanguage.AutoSize = true;
+            labelIsALanguage.ForeColor = SystemColors.Control;
+            labelIsALanguage.Location = new Point(11, 13);
+            labelIsALanguage.Name = "labelIsALanguage";
+            labelIsALanguage.Size = new Size(127, 20);
+            labelIsALanguage.TabIndex = 0;
+            labelIsALanguage.Text = "This is a language";
+            // 
+            // languageAnalyzerfileBtn
+            // 
+            languageAnalyzerfileBtn.Location = new Point(562, 109);
+            languageAnalyzerfileBtn.Name = "languageAnalyzerfileBtn";
+            languageAnalyzerfileBtn.Size = new Size(94, 29);
+            languageAnalyzerfileBtn.TabIndex = 4;
+            languageAnalyzerfileBtn.Text = "Import";
+            languageAnalyzerfileBtn.UseVisualStyleBackColor = true;
+            languageAnalyzerfileBtn.Click += languageAnalyzerfileBtn_Click;
+            // 
+            // isItALanguageBtn
+            // 
+            isItALanguageBtn.Location = new Point(353, 162);
+            isItALanguageBtn.Name = "isItALanguageBtn";
+            isItALanguageBtn.Size = new Size(172, 29);
+            isItALanguageBtn.TabIndex = 3;
+            isItALanguageBtn.Text = "Is it a language";
+            isItALanguageBtn.UseVisualStyleBackColor = true;
+            isItALanguageBtn.Click += isItALanguageBtn_Click;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(268, 113);
+            label24.Name = "label24";
+            label24.Size = new Size(61, 20);
+            label24.TabIndex = 2;
+            label24.Text = "File key:";
+            // 
+            // fileKeyNameTextBox
+            // 
+            fileKeyNameTextBox.Location = new Point(340, 110);
+            fileKeyNameTextBox.Name = "fileKeyNameTextBox";
+            fileKeyNameTextBox.Size = new Size(216, 27);
+            fileKeyNameTextBox.TabIndex = 1;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Arial Narrow", 16.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label23.Location = new Point(340, 33);
+            label23.Name = "label23";
+            label23.Size = new Size(222, 33);
+            label23.TabIndex = 0;
+            label23.Text = "Language analyzer";
             // 
             // audioPanel
             // 
@@ -751,11 +841,22 @@ namespace TextBuster
             labelFileTxt.TabIndex = 1;
             labelFileTxt.Text = "File .txt:";
             // 
+            // btnLanguageAnalyzer
+            // 
+            btnLanguageAnalyzer.FlatStyle = FlatStyle.Flat;
+            btnLanguageAnalyzer.Location = new Point(338, 0);
+            btnLanguageAnalyzer.Name = "btnLanguageAnalyzer";
+            btnLanguageAnalyzer.Size = new Size(158, 29);
+            btnLanguageAnalyzer.TabIndex = 4;
+            btnLanguageAnalyzer.Text = "Language Analyzer";
+            btnLanguageAnalyzer.UseVisualStyleBackColor = true;
+            // 
             // HideNSeekWord
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(967, 386);
+            Controls.Add(btnLanguageAnalyzer);
             Controls.Add(mainPanel);
             Controls.Add(audioBtn);
             Controls.Add(imageBtn);
@@ -764,6 +865,10 @@ namespace TextBuster
             Name = "HideNSeekWord";
             Text = "HideNSeekWord";
             mainPanel.ResumeLayout(false);
+            panelLanguageAnalyzer.ResumeLayout(false);
+            panelLanguageAnalyzer.PerformLayout();
+            panelIsALanguage.ResumeLayout(false);
+            panelIsALanguage.PerformLayout();
             audioPanel.ResumeLayout(false);
             audioPanel.PerformLayout();
             imagePanel.ResumeLayout(false);
@@ -842,5 +947,14 @@ namespace TextBuster
         private Label label21;
         private TextBox fileInputWav;
         private Label label22;
+        private Button btnLanguageAnalyzer;
+        private Panel panelLanguageAnalyzer;
+        private Button isItALanguageBtn;
+        private Label label24;
+        private TextBox fileKeyNameTextBox;
+        private Label label23;
+        private Button languageAnalyzerfileBtn;
+        private Panel panelIsALanguage;
+        private Label labelIsALanguage;
     }
 }
