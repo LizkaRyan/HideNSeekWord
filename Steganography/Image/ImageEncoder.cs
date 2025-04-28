@@ -55,34 +55,36 @@ public class ImageEncoder:Encoder
 
         int index = 0;
         KeyImageDecoder keyDecoder = (KeyImageDecoder)this._key;
-        keyDecoder.SetRandomPlace(this._bytesRGB.Count,contentEncoded.Length);
-        foreach (int place in keyDecoder.RandomPlace)
+        int place = (int)keyDecoder.Random.InitValue;
+        for (int i=0;i<contentEncoded.Length;i++)
         {
             try
             {
-                this.ChangeLastByteTo(contentEncoded[index],place);
+                ChangeLastByteTo(contentEncoded[i],place);
+                place += keyDecoder.Random.NextInt();
             }
             catch (IndexOutOfRangeException)
             {
                 break;
             }
-            index++;
         }
     }
 
     private void ChangeLastByteTo(char value, int index)
     {
         KeyImageDecoder keyImageDecoder = (KeyImageDecoder)this._key!;
-        keyImageDecoder.AddRandomPlace(index);
-        string binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
-        if (value == '1')
+        for (int i = (index * 3)+1; i < (index*3)+4; i++)
         {
-            this._bytesRGB[index] = (byte)(this._bytesRGB[index] | 1);
-            binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
-            return;
+            string binaryString = Convert.ToString(this._bytesRGB[i], 2).PadLeft(8, '0');
+            if (value == '1')
+            {
+                this._bytesRGB[i] = (byte)(this._bytesRGB[i] | 1);
+                binaryString = Convert.ToString(this._bytesRGB[i], 2).PadLeft(8, '0');
+                return;
+            }
+            this._bytesRGB[i] = (byte)(this._bytesRGB[i] & ~1);
+            binaryString = Convert.ToString(this._bytesRGB[i], 2).PadLeft(8, '0');
         }
-        this._bytesRGB[index] = (byte)(this._bytesRGB[index] & ~1);
-        binaryString = Convert.ToString(this._bytesRGB[index], 2).PadLeft(8, '0');
     }
 
     protected override void SaveTo(string outputPath)
